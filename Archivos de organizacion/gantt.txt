@@ -1,0 +1,17 @@
+13 semanas
+
+Diseño de la aplicacion -- 1 semana
+
+Base de datos
+Diseño de la base de datos -- 1 semana
+Creacion de la base de datos -- 1 semana
+Volcado de datos de la base de datos -- 1 semana
+
+API REST
+Aclaracion de metodos y funciones necesarias -- 1 semana
+Programacion de la api -- 2 semanas
+
+Aplicaciones
+Programacion de la aplicacion web y movil -- 2 semanas
+Programacion del back-end de la aplicacion de escritorio -- 2 semana
+Programacion del front-end de la aplicacion de escritorio -- 2 semana

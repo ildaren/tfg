@@ -1,0 +1,67 @@
+(Datos necesarios para el inicio de sesion)
+Usuario:
+	idUsuario
+	Usuario
+	Contraseña
+
+Registro:
+	idRegistrado
+	Nombre
+	Apellidos
+	Correo electronico
+	idUsuario
+	Contraseña repetida
+	Foto del anverso del carne
+	Foto del reverso del carne
+	Fecha en la que se lo saco
+	DNI y fecha de caducidad
+-----------------------------------------------------------------------------------------
+(Datos necesarios para incluir ofertas, mostrarlas, filtrarlas, etc)
+(Tambien para saber todos los coches en propiedad de la empresa y llevar un registro)
+(LLevar un registro de las ofertas por kilometraje)
+Oferta:
+	idOferta						Clave primaria
+	idCoche							Clave secundaria
+	idKilometraje						Clave secundaria
+	Politica de combustible (0 tanque lleno, otro valor no lleno)
+	Politica de cancelacion
+	
+Kilometraje:
+	idKilometraje						Clave primaria
+	Kilometraje, limitados(cantidad) o ilimitados.
+	Precio
+
+Coche:
+	idCoche 						Clave primaria
+	Modelo
+	Matricula
+	idMarca							Clave secundaria
+	Numero de puertas
+	Capacidad del maletero
+	Cambio de marchas
+	Plazas
+	Aire acondicionado
+	Gama
+	Precio/dia
+	Disponibilidad
+
+Marca:
+	idMarca							Clave primaria
+	Marca
+-----------------------------------------------------------------------------------------
+(Tras seleccionar la oferta tendras que pagar, la aplicacion no recogera los datos a menos)
+(que marques la casilla para hacerlo) (RICARDO HAZ ESTO QUE ME DA PALO)
+
+-----------------------------------------------------------------------------------------
+(Tras poner los datos de pago y seleccionar la oferta, la reserva de dicho vehiculo quedara grabada)
+(en la base de datos)
+Reserva:
+	idReserva						Clave primaria
+	idOferta						Clave secundaria
+	idRegistrado						Clave secundaria
+	Fecha de la reserva
+	Fecha de recogida del vehiculo
+	Fecha de entrega del vehiculo
+	Ciudad de recogida del vehiculo
+	Ciudad de entrega del vehiculo
+	Precio final (afecta la cantidad de dias, edad del conductor, tiempo con el carne, salida de la provincia)

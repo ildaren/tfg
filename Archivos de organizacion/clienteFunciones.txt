@@ -1,0 +1,32 @@
+Recibir datos de la bbdd:
+	Busqueda de ofertas:
+		Busqueda en la base de datos de ofertas en base a los filtros, que pueden ser uno o varios,
+		aunque siempre la fecha se tendra en cuenta.
+
+	Busqueda de reservas de la cuenta cliente:
+		Busqueda de las ofertas alquiladas por el cliente que tiene sesion iniciada
+
+Insert datos en la bbdd:
+	Registro:
+		Insert de todos los datos.
+	Pago:
+		Insert de la reserva con los datos de pago correspondiente en caso de que no existan ya en
+		la bbdd
+		Insert de la nueva fecha en la que el vehiculo no estara disponible
+
+Contrastacion de datos con la bbdd:
+	Login:
+		Busqueda en la bbdd de los datos y constatacion de que los datos son los correctos
+
+Update de datos en la bbdd:
+	Cambios en una reserva:
+		Se guardaran los cambios que desee realizar el cliente en su reserva.
+
+Eliminacion de datos en la bbdd:
+	Cancelacion de reserva:
+		El cliente desea cancelar la reserva hecha anteriormente.
+
+
+	
+
+

@@ -1,0 +1,55 @@
+Depende de los roles hara unas funciones u otras. A grandes rasgos:
+	Admin general:
+		Registrar nuevo trabajador.
+		Registrar nueva filial.
+		Consultar datos generales.
+		Este rol tiene acceso a todos los datos de todas las filiales.
+
+	Admin de cada filial:
+		Puedes meter coches en la base de datos.
+		Registrar mecanicos en la bbdd.
+		Consultar datos referentes a su filial.
+
+	Mecanicos:
+		Tras iniciar sesion solo pueden acceder a un listado de los coches que hay 
+		en dicha filial y cambia su varible en caso de que esten en mantenimiento.
+
+--------------------------------------------------------------------------------------------------------
+Registrar un trabajador: (de cualquier tipo, otro admin general, un admin de filial o un mecanico)
+	Datos:
+		Correo electronico
+		Contraseña
+		Rol
+		El id de la filial a la que esta asignado
+	Añadidos:
+		No hace falta cambiar nada mas en la bbdd
+
+Registrar una filial nueva:
+	Datos:
+		Comunidad autonoma
+		Ciudad
+		Calle
+		Numero
+	Añadidos:
+		No hace falta cambian nada mas en la bbdd
+
+Registrar coche nuevo:
+	Datos:
+		idCoche
+		modelo
+		matricula
+		marca
+		numeroPuertas
+		capacidadMaletero
+		cambioMarchas
+		plazas
+		aireCondicionado
+		gama
+		precioPorDia
+    		enMantenimiento
+    		idFilialCoche
+	Añadidos:
+		El dato de la filial a la que pertenece dependera de que persona esta 
+		ejecutando la funcionalidad.
+		enMantenimiento por defecto sera true, cuando el coche sea revisado 
+		por el mecanico, se pondra a false

@@ -1,0 +1,97 @@
+Datos:
+(Coche)
+	Vehiculo de ejemplo
+	Plazas
+	Numero de puertas
+	Tipo de cambio de marchas. (Manual/Automatico)
+	Tamaño del maletero
+	Aire acondicionado
+	Coches similares
+	Precio
+
+(Extras)
+	Silla para niños
+	Cadenas de nieve
+	Alguna mas que se me ocurra
+
+(Oferta)
+	Kilometraje, limitados(cantidad) o ilimitados.
+	Politica de combustible
+	Suplemento por conductor menor de X o mayor de Y (depende de la edad de aquel que alquila el coche, es decir, del dueño de la cuenta)
+
+(Pago)
+	Metodo de pago
+	Fianza. Politica de cancelacion de reserva hasta x dias antes de la fecha de recogida
+	Pago por demora de entrega del vehiculo
+
+(Seguro)
+	Suma asegurada del seguro de responsabilidad civil (Daños personales y daños materiales)
+	Limitacion de la responsabilidad (Seguro a todo riesgo, franquicia)
+	Proteccion complementaria (Cristales, ruedas, techo, bajos)
+	Clasificacion del seguro (Cobertura premium, cobertura media, cobertura basica)
+
+Funcionalidades:
+	Registro:
+		Datos requeridos:
+			Nombre completo
+			DNI
+			Usuario
+			Contraseña
+			Repetir contraseña
+			Correo electronico
+			Numero de telefono
+			Fecha en la que te sacaste el carne
+
+		Comprobaciones:
+			EL usuario no debe existir ya en la base de datos.
+			En DNI se puede hacer de dos maneras diferentes, o con un archivo con nombres, DNI, etc, simulando un archivo oficial del gobierno para
+				comprobar los DNIs o comprobar simplemente que no exista previamente en la base de datos.
+			La contraseña no debe existir en la base de datos y tiene que ser igual al repetir contraseña.
+			Si fuera posile y como ultima funcionalidad intentar hacer que cuando realizas una reserva se mande un correo y cuando te registras
+				se envie un correo de verificación.
+			
+		Salida al finalizar:
+			Cuando los datos esten escritos abajo habra una casilla de terminos de uso y demas, debajo de esto habra dos botones para cancelar o para
+				terminar el registro, en caso de que se termine el registro se volvera a la pagina anterior pero con la sesion iniciada.
+	
+	Inicio de sesion:
+		Datos requeridos:
+			Usuario
+			Contraseña
+
+		Comprobaciones:
+			Que tanto usuario y contraseña existan en la base de datos y pertenezcan a la misma cuenta.
+
+		Salida al finalizar:
+			Si lo termino haciendo como un pop up, la pagina que hay detras se recargara pero esta vez con la sesion iniciada, si lo hago en una pantalla 
+				diferente cuando se haga el log in se volvera a la pagina anterior pero con la sesion iniciada.
+
+	Consulta de vehiculos:
+		Datos requeridos:
+			Fecha y horas de recogida y entrega.
+			Posibilidad de viajar fuera de la ciudad donde se alquila y la posibilidad de dejarlo en otra franquicia.
+
+		Comprobaciones:
+			O bien se hacen las fechas de tal manera que no puedas elegir ninguna fecha anterior a la actual, o en caso de que eso no se
+				pueda se comprobaran las fechas para que esto no pase.
+
+		Salida al finalizar:
+			Una lista con datos reducidos de los coches ofertados segun el filtro, a su vez aparecera un filtro lateral donde se podra añadir
+				alguna opcion como el tipo de coche o el numero de asientos.
+			Aparecera en la parte derecha un mapa señalando en que franquicia en Madrid estan los coches de la lista o al menos el coche indicado.
+
+	Vista completa de la oferta:
+		Datos requeridos:
+			Simplemente pulsar un boton
+		
+		Comprobaciones:
+			Ninguna
+
+		Salida al finalizar:
+			Un pop-up que monstrara todos los datos, no solo del coche sino tambien de la oferta en cuestion y del seguro.
+
+	
+
+	Seleccion de oferta
+	
+
