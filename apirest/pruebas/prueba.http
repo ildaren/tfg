@@ -1,0 +1,5 @@
+GET http://localhost:8080/apirest/api/oferta http/1.1
+
+### 
+
+GET http://localhost:8080/apirest/api/oferta http/1.1

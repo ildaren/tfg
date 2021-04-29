@@ -69,17 +69,33 @@ CREATE TABLE IF NOT EXISTS `mydb`.`coche` (
 	`capacidadMaletero` INT NOT NULL,
 	`cambioMarchas` VARCHAR(45) NOT NULL,
 	`plazas` INT NOT NULL,
-	`aireCondicionado` INT NOT NULL,
+	`aireCondicionado` BOOLEAN NOT NULL,
 	`gama` VARCHAR(45) NOT NULL,
-	`precioPorDia` VARCHAR(45) NOT NULL,
+	`precioPorDia` DOUBLE NOT NULL,
     `enMantenimiento` BOOLEAN,
     `idFilialCoche` INT NOT NULL,
+    `idModelo` INT NOT NULL,
 	PRIMARY KEY (`idCoche`),
     CONSTRAINT `idFilialCoche`
 		FOREIGN KEY (`idFilialCoche`)
 		REFERENCES `mydb`.`filial` (`idFilial`)
 		ON DELETE CASCADE
-		ON UPDATE CASCADE)
+		ON UPDATE CASCADE,
+	CONSTRAINT `idModelo`
+		FOREIGN KEY (`idModelo`)
+		REFERENCES `mydb`.`modelo` (`idModelo`)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Modelo`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `mydb`.`modelo` ;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`modelo` (
+	`idModelo` INT UNIQUE NOT NULL AUTO_INCREMENT,
+    `modelo` VARCHAR(45) NOT NULL)
 ENGINE = InnoDB;
 
 -- -----------------------------------------------------
@@ -120,7 +136,8 @@ DROP TABLE IF EXISTS `mydb`.`oferta` ;
 CREATE TABLE IF NOT EXISTS `mydb`.`oferta` (
 	`idOferta` INT UNIQUE NOT NULL AUTO_INCREMENT,
 	`politicaCombustible` VARCHAR(45) NOT NULL,
-	`politicaCancelacion` VARCHAR(45) NOT NULL,
+	`politicaCancelacion` INT NOT NULL,
+    `suplemento` DOUBLE NOT NULL,
 	`kilometraje` INT NOT NULL,
 	PRIMARY KEY (`idOferta`))
 ENGINE = InnoDB;

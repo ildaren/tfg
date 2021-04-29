@@ -1,0 +1,3 @@
+javac -cp "WebContent/WEB-INF/lib/*" -d "WebContent/WEB-INF/classes/" src/data/*.java src/services/*.java
+
+cp -r WebContent /usr/srv/apache/tomcat-9.0.44/webapps/apirest

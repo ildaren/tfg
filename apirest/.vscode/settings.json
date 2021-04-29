@@ -1,0 +1,6 @@
+{   
+    "java.project.referencedLibraries": [
+        "apitfg/**/*.jar",
+        "WebContent/WEB-INF/lib/*.jar"
+    ]                                                                                                                   
+}
