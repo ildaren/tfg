@@ -1,0 +1,5 @@
+@entrypoint=http://localhost:8080/apirest/api
+
+###
+
+GET {{entrypoint}}/reserva/1 http/1.1

@@ -1,0 +1,19 @@
+Introduccion
+Estado de las tecnologias
+Diseño
+	Interfaces
+	Base de datos
+	Arquitectura del sistema(Modelo cliente servidor)
+	Desarrollo
+	Interfaces
+	Pruebas
+	Conclusiones
+	Lineas futuras
+	Analisis de impacto
+
+
+
+
+(Requisitos del sistema vs Funcionalidades implementadas)
+
+Departamente: Lenguajes y sistemas informaticos e ingenieria del software

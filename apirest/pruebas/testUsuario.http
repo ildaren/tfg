@@ -1,0 +1,243 @@
+@entrypoint=http://localhost:8080/apirest/api
+
+<!-- Usando el archivo basePruebas1.sql -->
+
+### GET de un usuario en base a su id
+
+GET {{entrypoint}}/usuario/3 http/1.1
+
+<!-- Request Response -->
+<!-- Status 200 -->
+<!--
+{
+  "apellidos": "Diaz Alvarez",
+  "ciudad": "Lugo",
+  "codigoPostal": "14054",
+  "contrasena": "gracias2956",
+  "correoElectronico": "jorgeda@gmail.com",
+  "direccion": "Via de la plata",
+  "dni": "49512876F",
+  "fechaCarne": "2029-11-14",
+  "href": "http://localhost:8080/apirest/api/usuario/3",
+  "idUsuario": 3,
+  "nombre": "Jorge"
+}
+
+Location: http://localhost:8080/apirest/api/usuario
+Content-Location: http://localhost:8080/apirest/api/usuario/3
+-->
+
+### Comprobacion mediante un metodo GET de si el usuario ha iniciado sesion correctamente
+
+GET {{entrypoint}}/usuario?dni=78952587S&contrasena=holaMundo12345 http/1.1
+
+<!-- Request Response -->
+<!-- Status 200 -->
+<!--
+{
+  "apellidos": "Garcia Sanchez",
+  "ciudad": "Madrid",
+  "codigoPostal": "23032",
+  "correoElectronico": "garciaignacio@gmail.com",
+  "direccion": "Calle francisco silvela",
+  "dni": "78952587S",
+  "fechaCarne": "2014-04-30",
+  "href": "http://localhost:8080/apirest/api/usuario/1",
+  "idUsuario": 1,
+  "nombre": "Ignacio"
+}
+
+Location: http://localhost:8080/apirest/api/usuario
+Content-Location: http://localhost:8080/apirest/api/usuario/1
+-->
+
+### POST de un nuevo usuario de la aplicacion
+
+POST {{entrypoint}}/usuario http/1.1
+Content-Type: application/json
+
+{"apellidos":"Garcia Fernandez","ciudad":"Madrid","codigoPostal":"28024","contrasena":"password","correoElectronico":"cris9902@gmail.com","direccion":"Calle Alcantara","dni":"51279831V","fechaCarne":"2020-10-04","nombre":"Cristian"}
+
+<!-- Request Response -->
+<!-- Status 201 -->
+<!--
+Location: http://localhost:8080/apirest/api/usuario
+Content-Location: http://localhost:8080/apirest/api/usuario/5
+-->
+
+### GET de la lista de pagos realizado por un usuario
+
+GET {{entrypoint}}/usuario/1/pago http/1.1
+
+<!-- Request Response -->
+<!-- Status 200 -->
+<!--
+[
+  {
+    "href": "http://localhost:8080/apirest/api/usuario/1/pago/3",
+    "hrefUsuarioPago": "http://localhost:8080/apirest/api/usuario/1",
+    "idPago": 3,
+    "numTarjeta": "8754858445984665",
+    "titular": "Ignacio Garcia"
+  }
+]
+
+Location: http://localhost:8080/apirest/api/usuario/1/pago
+Content-Location: http://localhost:8080/apirest/api/usuario/1/pago
+-->
+
+### GET de un pago perteneciente a un usuario
+
+GET {{entrypoint}}/usuario/1/pago/1 http/1.1
+
+<!-- Request Response -->
+<!-- Status 200 -->
+<!--
+{
+  "href": "http://localhost:8080/apirest/api/usuario/2/pago/1",
+  "hrefUsuarioPago": "http://localhost:8080/apirest/api/usuario/2",
+  "idPago": 1,
+  "numTarjeta": "8785456468948545",
+  "titular": "Ricardo Lopez"
+}
+
+Location: http://localhost:8080/apirest/api/usuario/1/pago
+Content-Location: http://localhost:8080/apirest/api/usuario/1/pago/1
+-->
+
+### GET de los datos de una reserva perteneciente 
+
+GET {{entrypoint}}/usuario/1/reserva/1 http/1.1
+
+<!-- Request Response -->
+<!-- Status 200 -->
+<!--
+{
+  "fechaEntrega": "2021-07-28",
+  "fechaRecogida": "2021-07-14",
+  "fechaReserva": "2021-07-05",
+  "href": "http://localhost:8080/apirest/api/usuario/1reserva/1",
+  "hrefCoche": "http://localhost:8080/apirest/api/oferta/11",
+  "hrefFilialEntrega": "http://localhost:8080/apirest/api/filial/2",
+  "hrefFilialRecogida": "http://localhost:8080/apirest/api/filial/2",
+  "hrefPago": "http://localhost:8080/apirest/api/usuario/1/pago/1",
+  "idReserva": 1,
+  "precioFinal": 165.36
+}
+
+Location: http://localhost:8080/apirest/api/usuario/1/reserva
+Content-Location: http://localhost:8080/apirest/api/usuario/1/reserva/1
+-->
+
+### GET de las reservas pertenecientes a un usuario
+
+GET {{entrypoint}}/usuario/1/reserva http/1.1
+
+<!-- Request Response -->
+<!-- Status 200 -->
+<!--
+{
+  "href": "http://localhost:8080/apirest/api/usuario/1/reserva?idUsuario=1&offset=0",
+  "reservas": [
+    {
+      "fechaEntrega": "2021-05-05",
+      "fechaRecogida": "2021-05-01",
+      "fechaReserva": "2021-04-05",
+      "href": "http://localhost:8080/apirest/api/usuario/1/reserva/4",
+      "hrefCoche": "http://localhost:8080/apirest/api/oferta/1",
+      "hrefFilialEntrega": "http://localhost:8080/apirest/api/filial/2",
+      "hrefFilialRecogida": "http://localhost:8080/apirest/api/filial/3",
+      "hrefPago": "http://localhost:8080/apirest/api/usuario/1/pago/3",
+      "idReserva": 4,
+      "precioFinal": 165.36
+    }
+  ]
+}
+
+Location: http://localhost:8080/apirest/api/usuario/1/reserva
+Content-Location: http://localhost:8080/apirest/api/usuario/1/reserva
+-->
+
+### DELETE de la reserva seleccionada, de la fecha de disponibilidad del coche
+### y en caso de que solo exista esta reserva con el pago asociado, tambien lo
+### eliminara
+
+DELETE {{entrypoint}}/usuario/2/reserva/1 http/1.1
+
+<!-- Request Response -->
+<!-- Status 200 -->
+
+### PUT metodo para actualizar la reserva del usuario especificado en la uri
+### se pueden modificar las fechas, lo que puede cambiar el precio final y
+### tambien a donde se entregara el coche
+
+PUT {{entrypoint}}/usuario/2/reserva/1 http/1.1
+Content-Type: application/json
+
+{"fechaRecogida":"2021-07-10","fechaEntrega":"2021-07-28","precioFinal":160.36,"hrefFilialEntrega":"1"}
+
+<!-- Request Response -->
+<!-- Status 200 -->
+<!--
+Location: http://localhost:8080/apirest/api/reserva
+Content-Location: http://localhost:8080/apirest/api/usuario/2/reserva/1
+-->
+
+### PUT metodo para actualizar la reserva de un usuario especificado en la uri
+### pero esta vez con fechas erroneas que coinciden con una reserva hecha por
+### otro usuario
+
+PUT {{entrypoint}}/usuario/2/reserva/1 http/1.1
+Content-Type: application/json
+
+{"fechaRecogida":"2021-07-02","fechaEntrega":"2021-07-28","precioFinal":160.36,"hrefFilialEntrega":"1"}
+
+<!-- Request Response -->
+<!-- Status 400 -->
+<!--
+Error: el nuevo periodo de reserva entra en conflicto con otro existente
+-->
+
+### POST en base a los datos introducidos de reserva y pago, se crean entradas
+### en las tablas de reserva y disponibilidad, y en caso de no existir previamente
+### el titular y la tarjeta tambien se meteran a la base de datos
+### En este ejemplo se crea una nueva reserva con nuevos datos de pago
+
+POST {{entrypoint}}/usuario/1/reserva http/1.1
+Content-Type: application/json
+
+{"pago":{"titular":"Fernando Batista","numTarjeta":"1234123412341234"},"reserva":{"fechaEntrega":"2021-01-05","fechaRecogida":"2021-01-01","fechaReserva":"2020-12-30","hrefCoche":"1","hrefFilialEntrega":"2","hrefFilialRecogida":"2","precioFinal":200.54}}
+
+<!-- Request Response -->
+<!-- Status 201 -->
+<!--
+Location: http://localhost:8080/apirest/api/usuario/1/reserva
+Content-Location: http://localhost:8080/apirest/api/usuario/1/reserva/5
+-->
+
+### Ejemplo creando una nueva reserva con los mismos datos de pago
+
+POST {{entrypoint}}/usuario/1/reserva http/1.1
+Content-Type: application/json
+
+{"pago":{"titular":"Fernando Batista","numTarjeta":"4754685855864984"},"reserva":{"fechaEntrega":"2021-01-05","fechaRecogida":"2021-01-01","fechaReserva":"2020-12-30","hrefCoche":"1","hrefFilialEntrega":"2","hrefFilialRecogida":"2","precioFinal":200.54}}
+
+<!-- Request Response -->
+<!-- Status 201 -->
+<!--
+Location: http://localhost:8080/apirest/api/usuario/1/reserva
+Content-Location: http://localhost:8080/apirest/api/usuario/1/reserva/6
+-->
+
+### Ejemplo de tarjeta existente pero con un titular diferente
+
+POST {{entrypoint}}/usuario/1/reserva http/1.1
+Content-Type: application/json
+
+{"pago":{"titular":"Ricardo Hernandez","numTarjeta":"4754685855864984"},"reserva":{"fechaEntrega":"2021-01-05","fechaRecogida":"2021-01-01","fechaReserva":"2020-12-30","hrefCoche":"1","hrefFilialEntrega":"2","hrefFilialRecogida":"2","precioFinal":200.54}}
+
+<!-- Request Response -->
+<!-- Status 400 -->
+<!--
+Error: No coincide el titular con el numero de tarjeta
+-->

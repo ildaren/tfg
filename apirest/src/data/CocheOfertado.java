@@ -1,12 +1,11 @@
-package data; 
+package data;
 
-public class Oferta {
+public class CocheOfertado {
 
     //Atributos que se devolveran al pedir a la api un listado de los coches
     private int idCoche;
-    private int idOferta;
     private String href;
-    private String modelo;
+    
     private String matricula;
     private String marca;
     private int numeroPuertas;
@@ -14,21 +13,22 @@ public class Oferta {
     private String cambioMarchas;
     private int plazas;
     private boolean aireAcondicionado; 
-    private String gama;
     private double precioDia;
+    private int kilometraje;
     private String politicaCombustible;
     private int politicaCancelacion;
+    private String hrefFilial;
+    private String modelo;
     
     //Contructor vacio
-    public Oferta() {
+    public CocheOfertado() {
     }
 
     //Constructor con todos los elementos 
-    public Oferta(int idCoche, int idOferta, String href, String modelo, String matricula, String marca, int numeroPuertas, int capacidadMaletero,       
-        String cambioMarchas, int plazas, boolean aireAcondicionado, String gama, double precioDia, String politicaCombustible, int politicaCancelacion) {
+    public CocheOfertado(int idCoche, String href, String matricula, String marca, int numeroPuertas, int capacidadMaletero, String cambioMarchas, 
+        int plazas, boolean aireAcondicionado, double precioDia, int kilometraje, String politicaCombustible, int politicaCancelacion, String modelo, String hrefFilial) {
 
         this.idCoche = idCoche;
-        this.idOferta = idOferta;
         this.href = href;
         this.modelo = modelo; 
         this.matricula = matricula;  
@@ -38,10 +38,11 @@ public class Oferta {
         this.cambioMarchas = cambioMarchas;                                                                                     
         this.plazas = plazas;
         this.aireAcondicionado = aireAcondicionado;
-        this.gama = gama;
         this.precioDia = precioDia;
+        this.kilometraje = kilometraje;
         this.politicaCombustible = politicaCombustible; 
         this.politicaCancelacion = politicaCancelacion;
+        this.hrefFilial = hrefFilial;
     }                                                                                                                                                                                                                                               //Get and set del id coche                                                                                              public int getIdCoche() {                                                                                                   return this.idCoche;                                                                                                }                                                                                                                                                                                                                                               
     
     public int getIdCoche() {
@@ -50,15 +51,6 @@ public class Oferta {
 
     public void setIdCoche(int idCoche) {
         this.idCoche = idCoche;
-    }
-    
-    //Get and set del id oferta
-    public int getIdOferta() {
-        return this.idOferta;
-    }
-    
-    public void setIdOferta(int idOferta) {
-        this.idOferta = idOferta;
     }
     
     //Get and set del enlace del elemento
@@ -141,15 +133,6 @@ public class Oferta {
         this.aireAcondicionado = aireAcondicionado;
     }
     
-    //Get and set de la gama del coche
-    public String getGama() {
-        return this.gama;
-    }
-    
-    public void setGama(String gama) {
-        this.gama = gama;
-    }
-    
     //Get and set del pedio del alquiler del coche por dia
     public double getPrecioDia() {
         return this.precioDia;
@@ -157,6 +140,15 @@ public class Oferta {
 
     public void setPrecioDia(double precioDia) {
         this.precioDia = precioDia;
+    }
+
+    //Get and set del kilometraje de la oferta
+    public int getKilometraje() {
+        return this.kilometraje;
+    }
+
+    public void setKilometraje(int kilometraje) {
+        this.kilometraje = kilometraje;
     }
     
     //Get and set de la politica del combustible, en cuando a si el deposito debe estar lleno al devolverse o no
@@ -175,5 +167,13 @@ public class Oferta {
         
     public void setPoliticaCancelacion(int politicaCancelacion) {
         this.politicaCancelacion = politicaCancelacion;
+    }
+
+
+    public String getHrefFilial() {
+        return this.hrefFilial;
+    }
+    public void setHrefFileal(String hrefFilial) {
+        this.hrefFilial = hrefFilial;
     }
 }

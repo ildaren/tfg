@@ -1,0 +1,81 @@
+@entrypoint=http://localhost:8080/apirest/api
+
+### GET de los datos de un coche
+
+GET {{entrypoint}}/oferta/1 http/1.1
+
+<!-- Request Response -->
+<!-- Status 200 -->
+<!--
+{
+  "aireAcondicionado": true,
+  "cambioMarchas": "manual",
+  "capacidadMaletero": 3,
+  "href": "http://localhost:8080/apirest/api/oferta/1",
+  "hrefFilial": "http://localhost:8080/apirest/api/filial/1",
+  "idCoche": 1,
+  "kilometraje": 10000,
+  "marca": "Citroen",
+  "matricula": "6767ggh",
+  "modelo": "C1",
+  "numeroPuertas": 5,
+  "plazas": 5,
+  "politicaCancelacion": 0,
+  "politicaCombustible": "lleno y lleno",
+  "precioDia": 24.5
+}
+
+Location: http://localhost:8080/apirest/api/oferta
+Content-Location: http://localhost:8080/apirest/api/oferta/1
+-->
+
+### GET de los datos de un coche disponible en esa filial entre esas fechas
+
+GET {{entrypoint}}/oferta?idFilial=1&fechaInicio=2021-05-06&fechaFinal=2021-05-11 http/1.1
+
+<!-- Request Response -->
+<!-- Status 200 -->
+<!--
+{
+  "cochesOfertados": [
+    {
+      "aireAcondicionado": true,
+      "cambioMarchas": "automatico",
+      "capacidadMaletero": 3,
+      "href": "http://localhost:8080/apirest/api/oferta/8",
+      "hrefFilial": "http://localhost:8080/apirest/api/filial/1",
+      "idCoche": 8,
+      "kilometraje": 10000,
+      "marca": "Volvo",
+      "matricula": "2546wfv",
+      "modelo": "V90",
+      "numeroPuertas": 5,
+      "plazas": 5,
+      "politicaCancelacion": 0,
+      "politicaCombustible": "Lleno-Lleno",
+      "precioDia": 26.5
+    },
+    {
+      "aireAcondicionado": false,
+      "cambioMarchas": "manual",
+      "capacidadMaletero": 3,
+      "href": "http://localhost:8080/apirest/api/oferta/10",
+      "hrefFilial": "http://localhost:8080/apirest/api/filial/1",
+      "idCoche": 10,
+      "kilometraje": 10000,
+      "marca": "Tesla",
+      "matricula": "3542ecg",
+      "modelo": "Model X",
+      "numeroPuertas": 5,
+      "plazas": 5,
+      "politicaCancelacion": 0,
+      "politicaCombustible": "Lleno-Lleno",
+      "precioDia": 22.5
+    }
+  ],
+  "href": "http://localhost:8080/apirest/api/oferta?idFilial=1&fechaInicio=2021-05-06&fechaFinal=2021-05-11&offset=0"
+}
+
+Location: http://localhost:8080/apirest/api/oferta
+Content-Location: http://localhost:8080/apirest/api/oferta
+-->

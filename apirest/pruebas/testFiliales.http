@@ -1,0 +1,68 @@
+@entrypoint=http://localhost:8080/apirest/api
+
+### GET de todas las filiales que hay, de esta manera se puede saber donde es posible
+### reservar vehiculos
+
+GET {{entrypoint}}/filial http/1.1
+
+<!-- Request Response -->
+<!-- Status 200 -->
+<!--
+[
+  {
+    "calle": "Calle Ardemans",
+    "ciudad": "Madrid",
+    "comunidad": "Madrid",
+    "href": "http://localhost:8080/apirest/api/filial/1",
+    "idFilial": 1,
+    "numero": 33
+  },
+  {
+    "calle": "Calle de la Creu",
+    "ciudad": "Barcelona",
+    "comunidad": "Cataluña",
+    "href": "http://localhost:8080/apirest/api/filial/2",
+    "idFilial": 2,
+    "numero": 22
+  },
+  {
+    "calle": "Calle General Elio",
+    "ciudad": "Valencia",
+    "comunidad": "Valencia",
+    "href": "http://localhost:8080/apirest/api/filial/3",
+    "idFilial": 3,
+    "numero": 22
+  },
+  {
+    "calle": "Calle Pintor Rosales",
+    "ciudad": "Toledo",
+    "comunidad": "Toledo",
+    "href": "http://localhost:8080/apirest/api/filial/4",
+    "idFilial": 4,
+    "numero": 13
+  }
+]
+
+Location: http://localhost:8080/apirest/api/filial
+Content-Location: http://localhost:8080/apirest/api/filial
+-->
+
+### GET de una filial en concreto conociendo su id
+
+GET {{entrypoint}}/filial/1 http/1.1
+
+<!-- Request Response -->
+<!-- Status 200 -->
+<!--
+{
+  "calle": "Calle Ardemans",
+  "ciudad": "Madrid",
+  "comunidad": "Madrid",
+  "href": "http://localhost:8080/apirest/api/filial/1",
+  "idFilial": 1,
+  "numero": 33
+}
+
+Location: http://localhost:8080/apirest/api/filial
+Content-Location: http://localhost:8080/apirest/api/filial/1
+-->

@@ -21,7 +21,7 @@ DROP TABLE IF EXISTS `mydb`.`trabajadores` ;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`trabajadores` (
 	`idTrabajador` INT UNIQUE NOT NULL AUTO_INCREMENT,
-    `correoElectronico` VARCHAR(45) NOT NULL,
+    `correoElectronico` VARCHAR(45) UNIQUE NOT NULL,
     `contraseña` VARCHAR(45) NOT NULL,
     `rol` INT NOT NULL, -- 0 para admin general, 1 para administrador de una filial
     `idFilialTrabajador` INT,
@@ -42,15 +42,12 @@ CREATE TABLE IF NOT EXISTS `mydb`.`usuario` (
 	`idUsuario` INT UNIQUE NOT NULL AUTO_INCREMENT,
 	`nombre` VARCHAR(45) NOT NULL,
 	`apellidos` VARCHAR(45) NOT NULL,
+    `contrasena` VARCHAR(45) NOT NULL,
 	`correoElectronico` VARCHAR(45) UNIQUE NOT NULL,
 	`dni` VARCHAR(9) UNIQUE NOT NULL,
-	`fechaCaducidad` VARCHAR(45) NOT NULL,
 	`direccion` VARCHAR(45) NOT NULL,
 	`ciudad` VARCHAR(45) NOT NULL,
-	`pais` VARCHAR(45) NOT NULL,
 	`codigoPostal` INT NOT NULL,
-	`fotoAnversoDNI` VARBINARY(8000) NOT NULL,
-	`fotoReversoDNI` VARBINARY(8000) NOT NULL,
 	`fechaCarne` DATE NOT NULL,
 	PRIMARY KEY (`idUsuario`))
 ENGINE = InnoDB;
@@ -58,44 +55,31 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `mydb`.`Coche`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`coche` ;
+DROP TABLE IF EXISTS `cocheOfertado` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`coche` (
-	`idCoche` INT UNIQUE NOT NULL AUTO_INCREMENT,
-	`modelo` VARCHAR(45) NOT NULL,
+CREATE TABLE IF NOT EXISTS `mydb`.`cocheOfertado` (
+	`idCocheOfertado` INT UNIQUE NOT NULL AUTO_INCREMENT,
 	`matricula` VARCHAR(7) UNIQUE NOT NULL,
 	`marca` VARCHAR(45) NOT NULL,
+	`modelo` VARCHAR(45) NOT NULL,
 	`numeroPuertas` INT NOT NULL,
 	`capacidadMaletero` INT NOT NULL,
 	`cambioMarchas` VARCHAR(45) NOT NULL,
 	`plazas` INT NOT NULL,
-	`aireCondicionado` BOOLEAN NOT NULL,
-	`gama` VARCHAR(45) NOT NULL,
+	`aireAcondicionado` BOOLEAN NOT NULL,
 	`precioPorDia` DOUBLE NOT NULL,
-    `enMantenimiento` BOOLEAN,
+    `enMantenimiento` BOOLEAN NOT NULL,
+    `politicaCombustible` VARCHAR(45) NOT NULL,
+	`politicaCancelacion` INT NOT NULL,
+    `kilometraje` INT NOT NULL,
     `idFilialCoche` INT NOT NULL,
-    `idModelo` INT NOT NULL,
-	PRIMARY KEY (`idCoche`),
+
+	PRIMARY KEY (`idCocheOfertado`),
     CONSTRAINT `idFilialCoche`
 		FOREIGN KEY (`idFilialCoche`)
 		REFERENCES `mydb`.`filial` (`idFilial`)
 		ON DELETE CASCADE
-		ON UPDATE CASCADE,
-	CONSTRAINT `idModelo`
-		FOREIGN KEY (`idModelo`)
-		REFERENCES `mydb`.`modelo` (`idModelo`)
-        ON DELETE CASCADE
-        ON UPDATE CASCADE)
-ENGINE = InnoDB;
-
--- -----------------------------------------------------
--- Table `mydb`.`Modelo`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`modelo` ;
-
-CREATE TABLE IF NOT EXISTS `mydb`.`modelo` (
-	`idModelo` INT UNIQUE NOT NULL AUTO_INCREMENT,
-    `modelo` VARCHAR(45) NOT NULL)
+		ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 -- -----------------------------------------------------
@@ -118,51 +102,20 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `mydb`.`disponibilidad`; 
 
 CREATE TABLE IF NOT EXISTS `mydb`.`disponibilidad` (
+	`idDisponibilidad` INT UNIQUE NOT NULL AUTO_INCREMENT,
 	`idCocheDisponibilidad` INT NOT NULL,
-    `disponibilidad` DATE NOT NULL,
-    PRIMARY KEY (`idCocheDisponibilidad`),
+    `fechaNoDisp` DATE NOT NULL,
+	`fechaInicioDisp` DATE NOT NULL,
+    PRIMARY KEY (`idDisponibilidad`),
     CONSTRAINT `idCocheDisponibilidad`
 		FOREIGN KEY (`idCocheDisponibilidad`)
-		REFERENCES `mydb`.`coche` (`idCoche`)
+		REFERENCES `mydb`.`cocheOfertado` (`idCocheOfertado`)
 		ON DELETE CASCADE
 		ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
--- -----------------------------------------------------
--- Table `mydb`.`Oferta`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`oferta` ;
-
-CREATE TABLE IF NOT EXISTS `mydb`.`oferta` (
-	`idOferta` INT UNIQUE NOT NULL AUTO_INCREMENT,
-	`politicaCombustible` VARCHAR(45) NOT NULL,
-	`politicaCancelacion` INT NOT NULL,
-    `suplemento` DOUBLE NOT NULL,
-	`kilometraje` INT NOT NULL,
-	PRIMARY KEY (`idOferta`))
-ENGINE = InnoDB;
 
 
--- -----------------------------------------------------
--- Table `mydb`.`RelacionOfertaCoche`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`relacionOfertaCoche` ;
-
-CREATE TABLE IF NOT EXISTS `mydb`.`relacionOfertaCoche` (
-    `idCocheRelacion` INT NOT NULL,
-    `idOfertaRelacion` INT NOT NULL,
-    PRIMARY KEY (`idCocheRelacion`, `idOfertaRelacion`),
-    CONSTRAINT `idCocheRelacion`
-		FOREIGN KEY (`idCocheRelacion`)
-		REFERENCES `mydb`.`coche` (`idCoche`)
-		ON DELETE CASCADE
-		ON UPDATE CASCADE,
-	CONSTRAINT `idOfertaRelacion`
-		FOREIGN KEY (`idOfertaRelacion`)
-        REFERENCES `mybd`.`oferta` (`idOferta`)
-        ON DELETE CASCADE
-        ON UPDATE CASCADE)
-ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -174,7 +127,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`pago` (
 	`idPago` INT UNIQUE NOT NULL AUTO_INCREMENT,
 	`Titular` VARCHAR(45) NOT NULL,
 	`numTarjeta` VARCHAR(16) NOT NULL,
-	`idUsuarioPago` INT UNIQUE NOT NULL,
+	`idUsuarioPago` INT NOT NULL,
 	PRIMARY KEY (`idPago`),
 	CONSTRAINT `idUsuarioPago`
 		FOREIGN KEY (`idUsuarioPago`)
@@ -192,32 +145,35 @@ DROP TABLE IF EXISTS `mydb`.`reserva` ;
 CREATE TABLE IF NOT EXISTS `mydb`.`reserva` (
 	`idReserva` INT UNIQUE NOT NULL AUTO_INCREMENT,
     `fechaReserva` DATE NOT NULL,
-    `fechaRecogidaVEH` DATE NOT NULL,
-    `fechaEntregaVEH` DATE NOT NULL,
-    `ciudadRecogidaVEH` VARCHAR(45) NOT NULL,
-	`ciudadEntregaVEH` VARCHAR(45) NOT NULL,
-	`precioFinal` FLOAT NOT NULL,
-	`idOfertaReserva` INT UNIQUE NOT NULL,
-	`idPagoReserva` INT UNIQUE NOT NULL,
+    `fechaRecogida` DATE NOT NULL,
+    `fechaEntrega` DATE NOT NULL,
+    `precioFinal` FLOAT NOT NULL,
+    `idCiudadRecogida` INT NOT NULL,
+	`idCiudadEntrega` INT NOT NULL,
+	`idCocheReservado` INT NOT NULL,
+	`idPagoReserva` INT NOT NULL,
 	PRIMARY KEY (`idReserva`),
 	CONSTRAINT `idPagoReserva`
 		FOREIGN KEY (`idPagoReserva`)
 		REFERENCES `mydb`.`pago` (`idPago`)
 		ON DELETE CASCADE
 		ON UPDATE CASCADE,
-	CONSTRAINT `idOfertaReserva`
-		FOREIGN KEY (`idOfertaReserva`)
-		REFERENCES `mydb`.`oferta` (`idOferta`)
+	CONSTRAINT `idCocheReservado`
+		FOREIGN KEY (`idCocheReservado`)
+		REFERENCES `mydb`.`cocheOfertado` (`idCocheOfertado`)
 		ON DELETE CASCADE
-		ON UPDATE CASCADE)
+		ON UPDATE CASCADE,
+	CONSTRAINT `idCiudadRecogida`
+		FOREIGN KEY (`idCiudadRecogida`)
+        REFERENCES `mydb`.`filial` (`idFilial`)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+	CONSTRAINT `idCiudadEntrega`
+		FOREIGN KEY (`idCiudadEntrega`)
+        REFERENCES `mydb`.`filial` (`idFilial`)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE)
 ENGINE =  InnoDB;
-
-
--- -----------------------------------------------------
--- Inserts table `mydb`.`Trabajadores`
--- -----------------------------------------------------
-INSERT INTO trabajadores (`idTrabajador`,`correoElectronico`,`contraseña`,`rol`) VALUES (1, '1', '1', 0);
-
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
