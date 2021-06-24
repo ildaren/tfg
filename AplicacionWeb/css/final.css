@@ -1,0 +1,480 @@
+body{
+    background-color: #1d1d1de0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.navbar {
+    background-color: #1d1d1de0;
+}
+
+.icono{
+    width: 50px;
+}
+
+.icono i{
+  color:white; 
+  font-size: 200%; 
+}
+
+#subtitulo{
+    font-size:15px;
+}
+
+#titulo{
+    font-size:25px;
+}
+
+#filtro{
+    margin-left: 25%;
+    height: 15%;
+    width: 50%;
+    margin-bottom: 3%;
+    color:#ffffff
+}
+
+.tabla{
+    margin-top: 3%;
+    margin-left: 20%;
+    margin-right: 20%;
+    width: 60%;
+    height: 180px;
+}
+
+table {
+    
+    border-radius: 8px;
+    background-color: rgb(26, 26, 26);
+    color:#ffffff;
+}
+
+aside {
+    float: left;
+    height: 620px;
+    width: 15%;
+    background-color: rgb(26, 26, 26);
+    color:#ffffff;
+    font-size: medium;
+    border-radius: 8px;
+    margin-left: 4%;
+    padding-left: 1%;
+    padding-right: 1%;
+    padding-top: 1%;
+}
+
+#filtroTitulo{
+    font-size: 140%;
+}
+
+hr{
+    border: rgb(94, 94, 94) 1px solid;
+    color: black;
+}
+
+.dropdown-container {
+    display: none;
+    background-color: rgb(26, 26, 26);
+    padding-left: 8px;
+}
+
+.dropdown-btn {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    display: block;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+    color: #ffffff;
+}
+
+.fa-caret-down {
+    float: right;
+    padding-right: 8px;
+    padding-top: 3%;
+}
+
+.dropdown-item{
+    color: white;
+}
+
+footer{
+    background-color: rgb(26, 26, 26);
+    width: 100%;
+    height: 120px;
+}
+
+#piePagina{
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 5px;
+    margin-bottom: 1%;
+    color:white;
+}
+
+.visibility{
+    opacity: 0;
+}
+  
+.hide{
+    display: none;
+}
+
+.swal-modal{
+    background-color: #2b2b2b;
+}
+  
+.swal-text{
+    color:white;
+    font: 100% sans-serif;
+    font-size: 18px;
+}
+
+.imagenCoche{
+  padding-left: 5%; 
+  padding-right: 5%;
+  width: 171;
+  height: 120;
+}
+
+#LogIn .container{
+    /*border:1px solid white;*/
+    width: 600px;
+    height: 350px;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    display: inline-flex; 
+  }
+
+.backbox{  
+    background-color: #404040;
+    width: 96%;
+    height: 80%;
+    position: absolute;
+    transform: translate(0,-50%);
+    top:50%;
+    display: inline-flex;
+}
+
+.frontbox .login{
+    background-color: white;
+    border-radius: 20px;
+    height: 100%;
+    width: 50%;
+    z-index: 10;
+    position: absolute;
+    right:0;
+    margin-left: 0;
+    transition: right .8s ease-in-out;
+  }
+
+  .frontbox .signup{
+    background-color: white;
+    border-radius: 20px;
+    height: 195%;
+    width: 50%;
+    z-index: 10;
+    position: absolute;
+    left:0;
+    margin-right: 0;
+    transition: right .8s ease-in-out;
+    margin-top: -25%;
+  }
+  
+  .moving{
+    right:45%;
+  }
+  
+  .loginMsg, .signupMsg{
+    width: 50%;
+    height: 100%;
+    font-size: 15px;
+    box-sizing: border-box;
+  }
+  
+  .loginMsg .title,
+  .signupMsg .title{
+    font-weight: 300;
+    font-size: 23px;
+  }
+  
+  .loginMsg p,
+  .signupMsg p {
+    font-weight: 100;
+  }
+  
+  .textcontent{
+    color:white;
+    margin-top:65px;
+    margin-left: 12%;
+  }
+  
+  .loginMsg button,
+  .signupMsg button {
+    background-color: #404040;
+    border: 2px solid white;
+    border-radius: 10px;
+    color:white;
+    font-size: 12px;
+    box-sizing: content-box;
+    font-weight: 300;
+    padding:10px;
+    margin-top: 20px;
+  }
+  
+  /* front box content*/
+  .login, .signup{
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .login h2,
+  .signup h2 {
+    color: #35B729;
+    font-size:22px;
+  }
+  
+  .inputbox{
+    margin-top:30px; 
+  }
+  .login input, 
+  .signup input {
+    display: block;
+    width: 100%;
+    height: 40px;
+    background-color: #f2f2f2;
+    border: none;
+    margin-bottom:20px;
+    font-size: 12px;
+  }
+  
+  .login button,
+  .signup button{
+    background-color: #35B729;
+    border: none;
+    color:white;
+    font-size: 12px;
+    font-weight: 300;
+    box-sizing: content-box;
+    padding:10px;
+    border-radius: 10px;
+    width: 60px;
+    position: absolute;
+    right:30px;
+    bottom: 30px;
+    cursor: pointer;
+  }
+  
+  /* Fade In & Out*/
+  .login p {
+    cursor: pointer;
+    color:#404040;
+    font-size:15px;
+  }
+  
+  .loginMsg, .signupMsg{
+    /*opacity: 1;*/
+    transition: opacity .8s ease-in-out;
+  }
+
+  .expand{
+    height: 195%;
+    margin-top: -25%;
+  }
+
+  .minimize{
+    height: 100%;
+    margin-top: 0%;
+  }
+
+#cabecera{
+  margin-left: 25%;
+  margin-right: 25%;
+  color: white;
+  margin-top: 2%;
+}
+
+#Reservas .tabla{
+  margin-left: 25%;
+  margin-right: 25%;
+  width: 50%;
+  height: 100px;
+}
+
+#Reservas table, #Reservas th, #Reservas td {
+  /*border: 1px solid rgb(255, 253, 253);*/
+  padding-left: 2%;
+}
+
+#services option {
+  display: inline-block;
+}
+
+#services {
+  width: 15.3%;
+  height: 100%;
+}
+
+/*-----------------------------------------------------------------------------------------------*/
+#detallesReserva .container{
+  margin-right: 25%;
+  margin-left: 25%;
+  width: 50%;
+  margin-top: 2%;
+  padding: 1%;
+  color:white;
+  background-color: rgb(26, 26, 26);
+  border-radius: 8px;
+}
+
+#detallesReserva input{
+  border-radius: 8px;
+  border: rgb(255, 255, 255) 1px solid;
+}
+
+#detallesReserva .collapsible {
+  background-color: rgb(26, 26, 26);
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+#detallesReserva .active, .collapsible:hover {
+  background-color: rgb(26, 26, 26);
+}
+
+#detallesReserva .content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: rgb(26, 26, 26);
+}
+
+#detallesReserva .tabla{
+  margin-top: 3%;
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+  height: 180px;
+}
+
+#detallesReserva table {
+  
+  border-radius: 8px;
+  background-color: rgb(26, 26, 26);
+  color:#ffffff;
+}
+
+#detallesReserva #Modificar, #detallesReserva #Enviar{
+  background-color: rgb(255, 255, 255); 
+  border: 0cm; 
+  width: 25%; 
+  margin-left: 1%;
+  margin-bottom: 2%;
+  color:black;
+  border-radius: 8px;
+}
+
+#detallesReserva #Cancelar, #detallesReserva #CandelarMod{
+  background-color: rgb(255, 255, 255); 
+  border: 0cm; 
+  color:black;
+  margin-bottom: 2%;
+  width: 25%; 
+  margin-left: 35%;
+  margin-right: 1%;
+  border-radius: 8px;
+}
+
+#detallesReserva select {
+  color:black;
+}
+/*-------------------------------------------------------------------------------------*/
+
+#datosPago .container{
+  margin-right: 25%;
+  margin-left: 25%;
+  width: 50%;
+  margin-top: 2%;
+  padding: 1%;
+  color:white;
+  background-color: rgb(26, 26, 26);
+  border-radius: 8px;
+}
+
+#datosPago input{
+  border-radius: 8px;
+  border: rgb(255, 255, 255) 1px solid;
+}
+
+#datosPago .collapsible {
+  background-color: rgb(26, 26, 26);
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+#datosPago .active, .collapsible:hover {
+  background-color: rgb(26, 26, 26);
+}
+
+#datosPago .content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: rgb(26, 26, 26);
+}
+
+#datosPago .tabla{
+  margin-top: 3%;
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+  height: 180px;
+}
+
+#datosPago table {
+  
+  border-radius: 8px;
+  background-color: rgb(26, 26, 26);
+  color:#ffffff;
+}
+
+#datosPago #Pagar {
+  background-color: rgb(255, 255, 255); 
+  border: 0cm; 
+  width: 25%; 
+  margin-left: 1%;
+  margin-bottom: 2%;
+  color:black;
+  border-radius: 8px;
+}
+
+#datosPago #CancelarPago {
+  background-color: rgb(255, 255, 255); 
+  border: 0cm; 
+  color:black;
+  margin-bottom: 2%;
+  width: 25%; 
+  margin-left: 25.5%;
+  margin-right: 1%;
+  border-radius: 8px;
+}
+
+#datosPago select {
+  color:black;
+}
